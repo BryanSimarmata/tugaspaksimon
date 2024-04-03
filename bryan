@@ -1,0 +1,69 @@
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+// Define a struct for the data
+struct Data {
+    int id;
+    string name;
+};
+
+// Function to push data onto the stack
+void pushData(stack<Data>& dataStack, int id, string name) {
+    Data newData;
+    newData.id = id;
+    newData.name = name;
+    dataStack.push(newData);
+}
+
+// Function to pop data from the stack
+void popData(stack<Data>& dataStack) {
+    if (!dataStack.empty()) {
+        dataStack.pop();
+    } else {
+        cout << "Stack is empty. Unable to pop data." << endl;
+    }
+}
+
+// Function to clear all data from the stack
+void clearData(stack<Data>& dataStack) {
+    while (!dataStack.empty()) {
+        dataStack.pop();
+    }
+    cout << "All data cleared from the stack." << endl;
+}
+
+// Function to show all data in the stack
+void showAllData(stack<Data> dataStack) {
+    cout << "Data in the stack:" << endl;
+    while (!dataStack.empty()) {
+        Data currentData = dataStack.top();
+        cout << "ID: " << currentData.id << ", Name: " << currentData.name << endl;
+        dataStack.pop();
+    }
+}
+
+int main() {
+    // Create a stack to hold Data objects
+    stack<Data> dataStack;
+
+    // Push some data onto the stack
+    pushData(dataStack, 1, "Bryan");
+    pushData(dataStack, 2, "Angel");
+    pushData(dataStack, 3, "Carlene");
+
+    // Show all data in the stack
+    showAllData(dataStack);
+
+    // Pop one data from the stack
+    popData(dataStack);
+
+    // Show all data in the stack after popping
+    showAllData(dataStack);
+
+    // Clear all data from the stack
+    clearData(dataStack);
+
+return 0;
+}
